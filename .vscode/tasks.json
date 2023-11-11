@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build active file",
+            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-I${workspaceFolder}\\include",
+                "-L${workspaceFolder}\\lib",
+                "${workspaceFolder}\\include\\glad\\*.c",
+                "${workspaceFolder}\\include\\stb\\*.cpp",
+                "${workspaceFolder}\\include\\engine\\*.cpp",
+                "${workspaceFolder}\\sources\\*.cpp",
+                "-lglfw3dll",
+                "-lfreetypedll",
+                "-o",
+                "${workspaceFolder}\\export\\${input:folder}\\game.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn" : ["copy freetype dll"]
+        },
+        {
+            "type": "shell",
+            "label": "copy freetype dll",
+            "command": "cp freetype.dll export\\${input:folder}",
+            "dependsOn" : ["copy glfw dll"]
+        },
+        {
+            "type": "shell",
+            "label": "copy glfw dll",
+            "command": "cp glfw3.dll export\\${input:folder}",
+            "dependsOn" : ["copy resources folder"]
+        },
+        {
+            "type": "shell",
+            "label": "copy resources folder",
+            "command": "cp -r resources export\\${input:folder}",
+            "dependsOn" : ["create export folder"]
+        },
+        {
+            "type" : "shell",
+            "label": "create export folder",
+            "command" : "mkdir export/${input:folder}"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "folder",
+            "description": "export folder (must be new folder)",
+            "type": "promptString"
+        }
+    ]
+}
