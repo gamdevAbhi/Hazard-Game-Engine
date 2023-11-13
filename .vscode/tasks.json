@@ -16,6 +16,8 @@
                 "${workspaceFolder}\\sources\\*.cpp",
                 "-lglfw3dll",
                 "-lfreetypedll",
+                "-lwinmmdll",
+                "-lkernel32dll",
                 "-o",
                 "${workspaceFolder}\\export\\${input:folder}\\game.exe"
             ],
@@ -29,6 +31,18 @@
                 "kind": "build",
                 "isDefault": true
             },
+            "dependsOn" : ["copy winmm dll"]
+        },
+        {
+            "type": "shell",
+            "label": "copy winmm dll",
+            "command": "cp winmm.dll export\\${input:folder}",
+            "dependsOn" : ["copy kernel32 dll"]
+        },
+        {
+            "type": "shell",
+            "label": "copy kernel32 dll",
+            "command": "cp kernel32.dll export\\${input:folder}",
             "dependsOn" : ["copy freetype dll"]
         },
         {

@@ -2,6 +2,7 @@
 #define ENGINE_GAMELOOP_HPP
 
 #include <engine/actor.hpp>
+#include <engine/audio.hpp>
 #include <engine/button.hpp>
 #include <engine/buttonmanager.hpp>
 #include <engine/billboard.hpp>
