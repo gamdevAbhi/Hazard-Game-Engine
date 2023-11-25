@@ -10,7 +10,7 @@ Hazard Game Engine, meticulously crafted in C++, draws inspiration from Unity En
 3. It's ready to use
 
 # Documentation
-https://dev-abhijit.pantheonsite.io/documentation-hazard-engine/ (not finished)
+https://dev-abhijit.pantheonsite.io/documentation-hazard-engine/
 
 # DEMOS
 Cosmic Mayhem : https://github.com/gamdevAbhi/Cosmic-Mayhem.git
